@@ -5,7 +5,7 @@ import Card from './components/Card'
 function App() {
   return (
     <div className="App">
-      <div>
+      <div className='add-todo'>
         <input placeholder='Fazer café' />
         <button>Adicionar</button>
       </div>
