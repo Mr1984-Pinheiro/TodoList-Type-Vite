@@ -1,5 +1,5 @@
 
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import './App.css'
 import Card from './components/Card'
 
@@ -14,6 +14,12 @@ function App() {
   //conectar o input ao valor do estado - pegar valor da variavel
   const [todoInput, setTodoInput] = useState('');  
   const [todos, setTodos] = useState<Todo[]>([]); //<> é generic
+
+  useEffect(() => {
+    localStorage.setItem('@todoList:todos', JSON.stringify(todos));
+
+  }, []);
+
 
   function addTodo () {
     //pegar variavel de input e jogar na lista de todos usando previous
