@@ -18,6 +18,18 @@
 
 .add-todo input {
   width: 100%;
+  text-decoration: none;
+  border: 0;
+  background-color: #e2e1e1;
+  padding: 0 10px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.add-todo button {
+  background-color: rgb(139, 86, 164);
+  color: #FFF;
+  margin-left: 0.5rem;
 }
 
 .todos {

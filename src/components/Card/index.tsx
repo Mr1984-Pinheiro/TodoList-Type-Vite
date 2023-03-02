@@ -23,7 +23,7 @@ function Card ({ todo, completeTodo, deleteTodo }: CardProps) {
 
             <div className="card-buttons">
                  <button onClick={handleCompleteTodo}>{todo.completed ? 'Retomar' : 'Completar'}</button>
-                 <button onClick={handleDeleteTodo}>Deletar</button>
+                 <button className="card-buttons-delete" onClick={handleDeleteTodo}>Deletar</button>
             </div>
             
         </div>

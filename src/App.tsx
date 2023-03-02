@@ -13,12 +13,21 @@ function App() {
 
   //conectar o input ao valor do estado - pegar valor da variavel
   const [todoInput, setTodoInput] = useState('');  
-  const [todos, setTodos] = useState<Todo[]>([]); //<> é generic
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    const storedTodos = localStorage.getItem('@todoList:todos');
+
+    if(storedTodos) {
+      return JSON.parse(storedTodos);
+    }
+
+    return ([]);
+  }); //<> é generic
 
   useEffect(() => {
+    //Passar 2 valores para a função setItem. 'chaveaplicacao:nomeItemSalvando', nomeItemSalvando 
     localStorage.setItem('@todoList:todos', JSON.stringify(todos));
 
-  }, []);
+  }, [todos]); //[array de dependencias] quando alterar todo o efeito é acionado
 
 
   function addTodo () {
@@ -48,7 +57,7 @@ function App() {
     <div className="App">
       <div className='add-todo'>
         {/*conecar input ao estado precisa 2 atributos value e onChange */}
-        <input placeholder='Fazer café' value={todoInput} onChange={handleInputChange} />
+        <input placeholder='Lista de tarefas' value={todoInput} onChange={handleInputChange} />
         <button onClick={addTodo}>Adicionar</button>
       </div>
 
